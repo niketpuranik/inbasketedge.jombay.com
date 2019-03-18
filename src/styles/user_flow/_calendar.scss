@@ -1,0 +1,208 @@
+.calendar{
+  display: flex;
+  .user_list{
+    border-right: solid 1px #d8d8d8;
+    flex: 0 0 300px;
+    overflow-y: auto;
+    li{
+      padding: rem-calc(16 25);
+      border-bottom: 2px solid #d8d8d8;
+      border-left: 4px solid transparent;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      background: #ededed;
+      &.active{
+        border-left-color: $info-color;
+        font-weight: 600;
+        background: #fff;
+        .name{
+          color: $info-color;
+        }
+      }
+      &:hover{
+        border-left-color: $info-color;
+        opacity: 0.7;
+      }
+      .avatar{
+        width: 20%;
+      }
+      .name{
+        width: 75%;
+        margin-left: 5%;
+        font-size: rem-calc(16);
+        color: #000;
+      }
+
+    }
+  }
+  .calendar_schedule{
+    flex: 4;
+    .schedule_meeting_btn{
+      position: fixed;
+      bottom: rem-calc(30);
+      right: rem-calc(30);
+      z-index: 10000;
+    }
+    .title_bar{
+      padding: rem-calc(0 20);
+      display: flex;
+      height: rem-calc(70);
+      border-bottom: 2px solid #d8d8d8;
+      align-items: center;
+      width: calc(100vw - 300px);
+    }
+    .schedule_container{
+      height: calc(100vh - #{$header_height + $progress_section_height + $tab_height});
+      width: calc(100vw - 300px);
+      overflow: auto;
+      table{
+        border-collapse: collapse;
+        table-layout: fixed;
+        margin-bottom: rem-calc(100);
+        tr{
+          td,th{
+            border: 1px solid #d8d8d8;
+            padding: 0;
+
+            div{
+              height: rem-calc(57);
+              width: calc((100vw - 400px) / 5);
+              padding: rem-calc(8);
+              position: relative;
+              color: rgba(0, 0, 0, 0.67);
+              font-size: rem-calc(14);
+            }
+            &:first-child{
+              div{
+                width: rem-calc(80);
+                text-transform: uppercase;
+                color: rgba(0, 0, 0, 0.67);
+                font-weight: 600;
+                font-size: rem-calc(16);
+                @include flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                align-items: center;
+                &:before{
+                  display: none !important;
+                }
+              }
+              &:hover{
+                &:before{
+                  display: none !important;
+                }
+                div{
+                  cursor: default;
+                  border-color: transparent;
+                }
+              }
+            }
+            &.scheduled{
+              div{
+                background: #f1faff;
+              }
+            }
+          }
+          th{
+            div{
+              height: rem-calc(50);
+              align-items: center;
+              justify-content: center;
+              flex-direction: column;
+              @include flex;
+            }
+          }
+          td{
+            div{
+              border: 2px solid transparent;
+              &:before{
+                content: attr(id);
+                width: 100%;
+                border-radius: rem-calc(2);
+                box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+                background-color: #ffffff;
+                border: solid 1px #d8d8d8;
+                font-size: rem-calc(14);
+                font-weight: normal;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: rgba(0, 0, 0, 0.67);
+                padding: rem-calc(12);
+                position: absolute;
+                z-index: 2;
+                top: calc(100% + 8px);
+                left: 0;
+                right: rem-calc(40);
+                display: none;
+              }
+              &:hover{
+                border-color: $info-color;
+                cursor: pointer;
+                &:before{
+                  display: block;
+                }
+              }
+            }
+          }
+          &.break{
+            td{
+              text-align: center;
+              color: rgba(0, 0, 0, 0.67);
+              font-weight: 600;
+              font-size: rem-calc(16);
+              div{
+                height: rem-calc(50);
+                width: 100%;
+                &:before{
+                  display: none !important;
+                }
+                &:hover{
+                  cursor: default;
+                  &:before{
+                    display: none !important;
+                  }
+                }
+              }
+              &:hover{
+                div{
+                  border-color: transparent;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+.schedule_meeting{
+  .select_member{
+    @include flex;
+    justify-content: center;
+    align-items: center;
+    .icon_member{
+      width: rem-calc(50);
+      height: rem-calc(50);
+      border-radius: 50%;
+      margin-right: rem-calc(12);
+      text-align: center;
+      overflow: hidden;
+      img{
+        max-width: 100%;
+      }
+    }
+  }
+  .date_selection{
+    .mat-form-field{
+      padding-left: rem-calc(40);
+      &:first-child{
+        padding-left: 0;
+      }
+    }
+  }
+}

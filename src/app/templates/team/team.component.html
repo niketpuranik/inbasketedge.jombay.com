@@ -1,0 +1,51 @@
+<div class="team">
+  <ul class="member_list">
+    <li *ngFor = "let person of teamMembers, let i = index"
+    (click) = "changePerson(i)"
+    [ngClass] = "{ active: selected_person_index == i }">
+      <div class="avatar rounded">
+        <img class="rounded" src="{{ person.avatar_url }}" alt="">
+      </div>
+      <div class="name truncate">
+        <div class="person_name truncate">{{ person.name }}</div>
+        <div class="text-normal truncate"><em>{{ action_texts[person._id.$oid] }}</em></div>
+      </div>
+      <div class="clr"></div>
+    </li>
+  </ul>
+
+  <div class="member_show">
+    <div class="member_details">
+      <div class="text-extra-big">
+        {{ selected_person.name }}
+      </div>
+    </div>
+    <div class="divider1"></div>
+    <div class="text-large">
+      Information
+    </div>
+    <div class="divider1"></div>
+    <p [innerHTML]="selected_person.description">
+    </p>
+  </div>
+  
+  <div class="member_actions">
+    <div class="divider1"></div>
+    <div class="fs-13">Use the options below to perform an action on the team member. You can change this action as required.</div>
+    <div class="divider1"></div>
+    <div class="action_container custom_radio">
+      <div class="bold">Take Actions for {{ selected_person.name }}</div>
+      <div class="divider1"></div>
+      <div *ngFor="let activity of activities"
+          (click) = "saveResponse(activity)">
+        <span
+          class="sudo-radio"
+          [ngClass] ="{ checked: activity._id.$oid == previous_selection }"></span>
+        <label>
+          {{ activity.name }}
+        </label>
+        <div class="divider1"></div>
+      </div>
+    </div>
+  </div>
+</div>

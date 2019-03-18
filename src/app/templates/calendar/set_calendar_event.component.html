@@ -1,0 +1,78 @@
+<div class="event-dialog schedule_meeting">
+  <div class="dialog_container">
+    <h3 class="heading left">Schedule a Meeting</h3>
+    <div class="right">
+      <div class="select_member">
+        <div class="icon_member">
+          <img *ngIf="selectedPerson" src="{{ selectedPerson.avatar_url }}" alt="">
+          <img *ngIf="!selectedPerson" src="./assets/images/in/ic-nouser.svg" alt="">
+
+        </div>
+        <mat-form-field>
+          <mat-select placeholder="{{selectPersonPlaceholder}}"
+            [(ngModel)]="selectedPersonId"
+            [ngClass]="{grayscale: pre_selected_person}">
+            <mat-option *ngFor="let person of persons"
+              (click) = "setPerson(person)"
+              [(value)]="person._id.$oid"
+              >
+              {{ person.name }}
+            </mat-option>
+         </mat-select>
+        </mat-form-field>
+
+      </div>
+    </div>
+
+    <div class="clr"></div>
+    <div class="divider1"></div>
+
+    <div class="date_selection">
+      <mat-form-field>
+        <mat-select placeholder="Date" [(ngModel)]="date">
+          <mat-option
+            *ngFor="let day of days"
+            [value]="day">{{ day | date: 'EEE, dd MMM' }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Time" [(ngModel)]="hour">
+          <ng-container *ngFor="let time of times, let i = index ">
+            <mat-option
+              *ngIf = "(time != 13 && i < (times.length - 1))"
+              [value]="time">
+                {{ (time>12) ? ((time-12)+'PM') : (time+'AM') }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Time" [(ngModel)]="hour">
+          <ng-container *ngFor="let time of times">
+            <mat-option
+              *ngIf = "time != 14"
+              [value]="time-1">
+              {{ (time>12) ? ((time-12)+'PM') : (time+'AM') }}
+            </mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="divider2"></div>
+    <div class="left">
+      <div class="danger-color" *ngIf = "selectedPersonError" >
+        {{ error_text }}
+      </div>
+    </div>
+    <div class="right">
+      <div class="text-right">
+        <a mat-button mat-raised-button class="btn-link grey-color text-medium line-height2 uppercase bold rounded" (click) = "cancel()">Cancel</a>
+        <a mat-button mat-raised-button class="btn-info link text-medium line-height2 uppercase bold rounded" (click) = "closeDialog()">Done</a>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+

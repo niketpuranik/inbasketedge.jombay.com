@@ -1,0 +1,70 @@
+<div class="inbox">
+  <ul class="email_list">
+    <li *ngFor="let email of emails, let i = index "
+    [routerLink]="['/base/' + email._id.$oid]" skipLocationChange preserveQueryParams
+    [ngClass] = "{
+      active: (this.selected_email._id.$oid == email._id.$oid),
+      unread: (read_email_ids.indexOf(email._id.$oid) < 0),
+      gray_bg: (read_email_ids.indexOf(email._id.$oid) >=0),
+      highlight: (email.sent_at === current_day && show_animation)
+    }">
+      <div class="subject">
+        <div class="left_sec truncate">
+          <div class="truncate subject_text" title = "{{email.subject}}" [innerHTML] = "email.subject" ></div>
+          <div class="name left truncate" [innerHTML] = "email.sender_name"></div>
+        </div>
+        <div class="right_sec">
+          <div class="icon" *ngIf = "mark_for_future_email_ids.indexOf(email._id.$oid) >= 0" >
+            <img src="./assets/images/in/pin.svg" alt="">
+          </div>
+          <div class="day">{{ sent_at(email.sent_at) | date: 'dd MMM' }}</div>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </li>
+  </ul>
+
+  <div class="email_show">
+    <div class="subject" [innerHTML] = "selected_email.subject"></div>
+    <div class="divider1"></div>
+    <div class="header">
+      <div class="user spacer">
+        <div class="avatar rounded" matTooltip="{{ selected_email.sender_info }}">
+          <img class="rounded" style="max-width: 50px;" src="{{ selected_email.avatar_url ? selected_email.avatar_url : './assets/images/in/avatar_thumb.png' }}">
+        </div>
+        <div class="details" matTooltip="{{ selected_email.sender_info }}">
+          <div class="name" [innerHTML] = "selected_email.sender_name"></div>
+          <div class="time_stamp" style="margin-top: 5px;">
+            {{ sent_at(selected_email.sent_at) | date: 'dd MMM' }}
+          </div>
+        </div>
+      </div>
+
+      <mark-for-future
+        [email] = selected_email
+        [activity_group] = mark_for_future *ngIf = "mark_for_future"></mark-for-future>
+    </div>
+    <div class="divider1"></div>
+    <div [innerHTML]="selected_email.body"></div>
+  </div>
+
+  <div class="email_actions" id="email_actions" *ngIf="selected_email">
+    <div class="fs-12">Use the options below to perform actions on the email. Once saved, you cannot change these actions.</div>
+    <div class="divider1"></div>
+    <ul class="email_actions_list">
+      <assign-email
+      [email] = selected_email
+      [activity_group] = assign_email *ngIf = "assign_email"></assign-email>
+      <assign-priority
+      [email] = selected_email
+      [activity_group] = assign_priority *ngIf = "assign_priority"
+      ></assign-priority>
+      <reply
+      [email] = selected_email
+      [question] = reply *ngIf = "reply"></reply>
+      <long-reply
+      [email] = selected_email
+      [question] = long_reply *ngIf = "long_reply"></long-reply>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,578 @@
+/* This file is for setting global styles  */
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import 'custom_theme';
+@import 'variables';
+@import 'utility';
+@import 'override';
+@import 'onboarding';
+@import 'responsive';
+
+.cout-wrapper {
+  border-right: 1px solid gray;
+  padding-right: rem-calc(20);
+  margin-right: rem-calc(20);
+  text-align: right;
+  .count {
+    font-size: rem-calc(24);
+    font-weight: bold;
+    color: $warning-color;
+  }
+  .lable {
+    color: gray;
+  }
+}
+
+.next-button {
+  position: fixed !important;
+  bottom: 25px;
+  right: 35px;
+}
+
+.image_wrapper {
+  height: 1px;
+  width: 1px;
+  position: relative;
+}
+
+.content_wrapper {
+  position: absolute;
+  top: 4rem;
+  height: calc(100% - 4rem);
+  left: 0;
+  overflow: auto;
+  width: 100%;
+  -webkit-transition: 2s;
+  -moz-transition: 2s;
+  -o-transition: 2s;
+  transition: 2s;
+  background: #fff;
+}
+
+.danger-color{
+  color: $danger-color !important;
+  .mat-radio-label-content {
+    color: $danger-color !important;
+    font-weight: bold;
+  }
+}
+
+.success-color{
+  color: $success-color !important;
+  .mat-radio-label-content {
+    color: $success-color !important;
+    font-weight: bold;
+  }
+}
+
+//header
+.header_divider{
+  height: rem-calc(64);
+  &.mobile{
+    height: rem-calc(114);
+  }
+}
+.header{
+  padding: rem-calc(18 0) !important;
+  .left_sec{
+    padding-left: rem-calc(40);
+    @include flex;
+    align-items: center;
+    .logo{
+      padding-right: rem-calc(10);
+      img{
+        vertical-align: middle;
+      }
+    }
+    .company_name{
+      font-size: rem-calc(16);
+      padding-left: rem-calc(10);
+      border-left: 1px solid #fff;
+    }
+  }
+  .right_sec{
+    padding: rem-calc(0 15);
+    font-size: rem-calc(14);
+    color: #fff;
+    height: 100%;
+    @include flex;
+    align-items: center;
+    width: rem-calc(175);
+    border-left: 1px solid #fff;
+    span{
+      max-width: rem-calc(150);
+    }
+  }
+  .timer {
+    font-size: rem-calc(20);
+    color: #fff;
+    margin-right: 10px;
+    font-weight: bold;
+    text-align: right;
+    width: rem-calc(225);
+    .lable {
+      font-size: rem-calc(14);
+    }
+    .total_time{
+      font-size: rem-calc(10);
+      font-weight: normal;
+      padding-right: rem-calc(15);
+    }
+  }
+  .timer-frozen {
+    margin-right: rem-calc(10);
+    height: rem-calc(46);
+    line-height: rem-calc(44);
+    i {
+      position: relative;
+      top: 5px;
+      left: 0;
+    }
+  }
+  &.fixed{
+    top: 0;
+    z-index: 999;
+  }
+  *{
+    line-height: normal;
+  }
+  &.mobile{
+    padding: 0 !important;
+    .left_sec, .right_sec{
+      display: block;
+      width: 50%;
+      text-align: center;
+      float: left;
+      padding: 0 0.9375rem;
+      height: auto;
+      line-height: rem-calc(50);
+    }
+    .right_sec{
+    }
+    .left_sec{
+      .company_name{
+        border: 0 none;
+      }
+
+    }
+    .timer-frozen, .timer{
+      text-align: center;
+      padding: rem-calc(10 0);
+      margin: 0;
+      background: rgba(255, 255, 255, .2);
+      display: block;
+      height: auto;
+      width: auto;
+    }
+    &.mat-toolbar-row, &.mat-toolbar-single-row{
+      height: auto;
+      display: block;
+    }
+  }
+}
+//Man Overlay
+.man_overlay{
+  position: fixed;
+  z-index: 10003;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  .content{
+    background: url('../assets/images/man_overlay.png') no-repeat center bottom;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: rem-calc(800);
+    padding: rem-calc(50 50 300 235);
+    color: #fff;
+    font-size: rem-calc(24);
+    line-height: rem-calc(34);
+  }
+  .cta {
+    position: absolute;
+    bottom: 50px;
+    right: 51px;
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    width: 150px;
+    cursor: pointer;
+    font-size: 22px;
+    border: 1px solid;
+  }
+}
+
+//instructions
+.instructions{
+  background-color: #fff;
+  .visual{
+    height: rem-calc(465);
+    width:rem-calc(175);
+    background: url('../assets/images/instruction_bg.png') no-repeat 0 0;
+    position: relative;
+    img{
+      position: absolute;
+      bottom: rem-calc(80);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .content{
+    .heading{
+      font-size: rem-calc(30);
+      line-height: rem-calc(42);
+      color: #403F41;
+      font-weight: normal !important;
+      span {
+        font-weight: 600 !important;
+      }
+    }
+    ul{
+      li{
+        color: #808285;
+        font-size: rem-calc(18);
+        padding-left: rem-calc(40);
+        position: relative;
+        margin-bottom: rem-calc(18);
+        line-height: rem-calc(28);
+        &:before{
+          position: absolute;
+          content: " ";
+          left: rem-calc(10);
+          top: rem-calc(5);
+          width: rem-calc(10);
+          height: rem-calc(14);
+          background: url('../assets/images/instructions_right_angle.png') no-repeat center center transparent;
+        }
+      }
+    }
+    p{
+      color: #403F41;
+      font-size: rem-calc(18);
+      line-height: rem-calc(28);
+    }
+    table{
+      font-size: rem-calc(18);
+      width: 100%;
+      text-align: center;
+      th{
+        color: #191919;
+        font-weight: 200;
+      }
+      tbody{
+        tr{
+          td{
+            color: #808285;
+            padding: rem-calc(7 0);
+            border-top: 1px solid #ccc;
+          }
+          &:first-child{
+            td{
+              border: 0 none;
+            }
+          }
+        }
+
+      }
+
+    }
+  }
+}
+
+//instructions
+.instructions, .instruction_overlay{
+  background-color: #fff;
+  .visual{
+    height: rem-calc(465);
+    width:100%;
+    background: url('../assets/images/instruction_bg.png') no-repeat 0 0;
+    background-size: 100% auto;
+    position: relative;
+    img{
+      position: absolute;
+      bottom: rem-calc(80);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .content{
+    .heading{
+      font-size: rem-calc(30);
+      line-height: rem-calc(42);
+      color: #403F41;
+    }
+    ul{
+      li{
+        color: #808285;
+        font-size: rem-calc(18);
+        padding-left: rem-calc(40);
+        position: relative;
+        margin-bottom: rem-calc(18);
+        line-height: rem-calc(28);
+        &:before{
+          position: absolute;
+          content: " ";
+          left: rem-calc(10);
+          top: rem-calc(5);
+          width: rem-calc(10);
+          height: rem-calc(14);
+          background: url('../assets/images/instructions_right_angle.png') no-repeat center center transparent;
+        }
+      }
+    }
+    p{
+      color: #403F41;
+      font-size: rem-calc(18);
+      line-height: rem-calc(28);
+    }
+    table{
+      font-size: rem-calc(18);
+      width: 100%;
+      text-align: center;
+      th{
+        color: #191919;
+        font-weight: 200;
+      }
+      tbody{
+        tr{
+          td{
+            color: #808285;
+            padding: rem-calc(7 0);
+            border-top: 1px solid #ccc;
+          }
+          &:first-child{
+            td{
+              border: 0 none;
+            }
+          }
+        }
+
+      }
+
+    }
+  }
+}
+
+//Instruction Overlay
+.instruction_overlay {
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6) !important;
+  .content {
+    z-index: 10001;
+    position: absolute;
+    top: rem-calc(170);
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-size: rem-calc(24);
+    line-height: rem-calc(34);
+    background-color: white;
+    width: rem-calc(1050);
+    height: auto;
+    text-align: left;
+    padding: rem-calc(20);
+    border-radius: 50px;
+    max-height: calc(100% - 160px);
+    max-width: calc(100% - 60px);
+    overflow-y: hidden;
+    ul{
+      li{
+        font-size: rem-calc(15);
+        padding-left: rem-calc(0 40);
+        margin-bottom: rem-calc(16);
+        line-height: rem-calc(20);
+      }
+    }
+  }
+}
+
+// Start Assessment
+.start_assessment{
+   height: calc(100% - 64px);
+  .heading{
+    color: $warning-color;
+    font-size: rem-calc(30);
+    span {
+      font-weight: 600;
+    }
+  }
+  .visual{
+    background: #D78050;
+    height: calc(100% + 4rem);
+  }
+  .content{
+    p{
+      color: #666;
+      font-size: rem-calc(24);
+      line-height: rem-calc(34);
+      &.bold{
+        color: #0E0E0E;
+      }
+    }
+  }
+}
+// Thank you
+.thank_you{
+   height: calc(100%);
+   background: #fff;
+   @include flex;
+   align-items: center;
+  .heading{
+    color: #0288D1;
+    font-weight: 600;
+    font-size: rem-calc(48);
+  }
+  .mat-progress-spinner.mat-progress-spinner-indeterminate-animation[mode=indeterminate] circle {
+    stroke: #0288D1;
+  }
+  .visual{
+
+  }
+  .content{
+    p{
+      color: #666;
+      font-size: rem-calc(25);
+      line-height: rem-calc(35);
+    }
+  }
+}
+//question
+.question{
+  .instruction-button {
+    font-size: rem-calc(30);
+    font-weight: bold;
+    z-index: 998;
+  }
+  .progress_bar{
+    height: rem-calc(5);
+    position: fixed;
+    top: rem-calc(64);
+    z-index: 1000;
+    left: 0;
+    width: 100%;
+    .meter{
+      position: relative;
+      height: 100%;
+      background: $warning-color;
+      min-width: rem-calc(37);
+      transition: width 2s;
+      .percentage{
+        font-size: rem-calc(12);
+        position: absolute;
+        right: 0;
+        top: rem-calc(-15);
+        width: rem-calc(36);
+        height: rem-calc(36);
+        line-height: rem-calc(36);
+        color: #fff;
+        text-align: center;
+        background: $warning-color;
+        border-radius: 50%;
+        z-index: 9999;
+      }
+    }
+  }
+  .title {
+    font-size: rem-calc(30);
+    color: $warning-color;
+    font-weight: bold;
+  }
+  .sub-title {
+    margin-top: 10px;
+    color: grey;
+  }
+  .question_body{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: rem-calc(20 40);
+    .question_text{
+      font-size: rem-calc(20);
+      color: #58595B;
+      font-weight: bold;
+      line-height: rem-calc(30);
+      .question-image {
+        display: block;
+        margin: 10px auto;
+      }
+    }
+
+    .bubble_container{
+      position: relative;
+      width: rem-calc(5);
+      height: rem-calc(5);
+      display: inline-block;
+      font-weight: normal !important;
+      .arrow{
+        background: url("../assets/images/bubble_arrow.png") no-repeat 0 0;
+        width: rem-calc(32);
+        height: rem-calc(15);
+        position: absolute;
+        top:0;
+        left: rem-calc(-3);
+        z-index: 3;
+      }
+      .bubble{
+        position: absolute;
+        border: 2px solid $warning-color;
+        font-size: rem-calc(14);
+        line-height: rem-calc(25);
+        color: #000;
+        padding: rem-calc(15 10);
+        border-radius: rem-calc(20);
+        min-height: rem-calc(80);
+        width: rem-calc(600);
+        left: rem-calc(10);
+        top: 0;
+        background-color: #fff;
+        z-index: 1;
+
+      }
+    }
+  }
+
+  .options {
+    outline: none;
+    p {
+      margin: 0px !important;
+    }
+  }
+
+  .option-image {
+    display: block;
+    margin-top: 10px;
+  }
+}
+
+.current-section-index {
+    background: $warning-color;
+    padding: 1px 7px 1px 6px;
+    border-radius: 50%;
+    border: 1px solid $warning-color;
+}
+
+.hide-all {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: white;
+  z-index: 10001;
+  @include flex;
+  align-items: center;
+  text-align: center;
+  font-size: rem-calc(30);
+  p {
+    padding: rem-calc(50);
+  }
+}

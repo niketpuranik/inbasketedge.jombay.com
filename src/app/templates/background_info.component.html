@@ -1,0 +1,47 @@
+<div class="instructions backgroundInstructions" *ngIf="backgroundInstructions.length > 0">
+  <div class="row large-16 medium-18 small-30 margin-auto">
+    <ul>
+      <li class="slide_up"
+        *ngFor = "let instruction of backgroundInstructions, let i = index"
+        [class.active]="backgroundInstructionsIndex == i">
+        <div style="width: 100%">
+          <img (error)="updateImageUrl($event)" src="./assets/images/in/{{ instruction['image'] }}">
+        </div>
+        <div class="divider2"></div>
+        <div style="width: 100%">
+          <p [innerHTML]="instruction['text']" ></p>
+        </div>
+        <div class="text-center">
+          <div class="divider4"></div>
+          <a mat-button mat-raised-button class="btn-info text-medium line-height2 uppercase bold rounded"
+          (click) = "next()"
+          *ngIf="show_cta && (backgroundInstructionsIndex == (backgroundInstructions.length - 1))">
+            View Team Structure
+          </a>
+        </div>
+      </li>
+    </ul>
+    <div class="instructions_navigation">
+      <div class="instructions_navigation_container">
+        <span class="spacer"></span>
+        <div class="arrow up">
+          <div class="prev"
+          (click) = "previousBackgroundInstruction()"
+          *ngIf="backgroundInstructionsIndex > 0"></div>
+        </div>
+        <div class="dot"
+          *ngFor = "let instruction of backgroundInstructions, let i = index"
+          [class.active]="backgroundInstructionsIndex == i"
+          (click) = "backgroundInstructionsIndex = i"></div>
+        <div class="arrow down">
+          <div class="next"
+          (click) = "nextBackgroundInstruction()"
+          *ngIf="backgroundInstructionsIndex < (backgroundInstructions.length - 1)">
+          </div>
+        </div>
+        <span class="spacer"></span>
+      </div>
+    </div>
+    
+  </div>
+</div>

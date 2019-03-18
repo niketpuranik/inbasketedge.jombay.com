@@ -1,0 +1,76 @@
+<li class="actions ">
+  <div class="count left">1. </div>
+  <div class="main_container left">
+    <div class="status_bar" [ngClass] = "{ done: previous_selection }">
+      <div class="icon"></div>
+      {{ activity_group.name }}
+    </div>
+    <div class="divider1"></div>
+    <div class="action_container custom_radio">
+      <div *ngFor="let activity of activities"
+        (click) = "assignPerson(activity)"
+        [ngClass] ="{ grayscale: previous_selection && activity._id.$oid != previous_selection }">
+        <span
+          class="sudo-radio"
+          [ngClass] ="{ checked: (activity._id.$oid == previous_selection || (unsaved_response && activity._id.$oid == unsaved_response._id.$oid)) }"></span>
+        <label>
+          <span *ngIf="!(selected_person && activity._id.$oid == previous_selection)"> {{ activity.name }} </span>
+
+          <span *ngIf="selected_person && activity._id.$oid == previous_selection"> {{ after_action_text }} </span>
+
+          <div  *ngIf="selected_person && (activity._id.$oid == previous_selection || (unsaved_response && activity._id.$oid == unsaved_response._id.$oid))">
+            <em class="text-normal">{{ selected_person.name }}</em>
+          </div>
+
+        </label>
+
+        <div class="divider1"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+  <button
+    class = "right btn-info text-medium line-height2 uppercase mat-button mat-raised-button"
+    *ngIf="unsaved_response && (!previous_selection)"
+    (click) = "saveResponse()">Save</button>
+  <div class="clr"></div>
+</li>
+<!-- HTML classes for Li
+selected
+self -->
+<div class="team-tree-wrapper" *ngIf="show_org_chart">
+  <div class="divider1"></div>
+  <div class="team_tree_container">
+
+    <div class="team-tree">
+      <ul *ngFor="let level of levels">
+        <li *ngFor="let person of level"
+          (click) = "selectPerson(person)"
+          [ngClass] = "{ self: person.is_player,
+                        selected: selected_person && selected_person._id.$oid == person._id.$oid }">
+          <div class="content">
+            <div class="avatar"><img src="{{ person.avatar_url }}" alt=""></div>
+            <div class="name" *ngIf="person.is_player">You</div>
+            <div class="name" *ngIf="!person.is_player">{{ person.name }}</div>
+            <div class="details"></div>
+          </div>
+          <div class="left_sec"></div>
+          <div class="right_sec"></div>
+          <div class="clr"></div>
+        </li>
+      </ul>
+    </div>
+    <div class="divider3"></div>
+  </div>
+  <div class="action_bar">
+    <div class="grayscale">
+      <span class="bold">{{ after_action_text }}: </span>
+      <span *ngIf="!selected_person"> Click on a member to select</span>
+      <span *ngIf="selected_person"> {{ selected_person.name }}</span>
+    </div>
+    <div class="spacer"></div>
+    <a mat-button mat-raised-button class="btn-link info-color text-medium line-height2 uppercase bold rounded" (click)="cancel()">Cancel</a>
+    <a mat-button mat-raised-button class="btn-info link text-medium line-height2 uppercase bold rounded" (click)="saveAndCloseResponse()">Save</a>
+
+  </div>
+</div>

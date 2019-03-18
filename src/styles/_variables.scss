@@ -1,0 +1,53 @@
+//Variables
+$nav-button-color: #00838F;
+$danger-color: #E35959;
+$info-color: #45b0f2;
+$grey-color: #979797;
+$dark-grey-color: #808285;
+$warning-color: #F5821F;
+$success-color: #31B22C;
+$rem-base: 16px !default;
+$mark-for-review-color: #808285;
+$option-color: #58595B;
+$header_height: 48px;
+$progress_section_height: 52px;
+$tab_height: 48px;
+
+// Function => CONVERT TO REM
+@function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+@function convert-to-rem($value, $base-value: $rem-base) {
+  $value: strip-unit($value) / strip-unit($base-value) * 1rem;
+  @if ($value == 0rem) { $value: 0; } // Turn 0rem into 0
+  @return $value;
+}
+@function rem-calc($values, $base-value: $rem-base) {
+  $max: length($values);
+
+  @if $max == 1 { @return convert-to-rem(nth($values, 1), $base-value); }
+
+  $remValues: ();
+  @for $i from 1 through $max {
+    $remValues: append($remValues, convert-to-rem(nth($values, $i), $base-value));
+  }
+  @return $remValues;
+}
+
+//Mixins
+@mixin clearfix {
+  content: " ";
+  display: table;
+}
+@mixin flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+@mixin truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

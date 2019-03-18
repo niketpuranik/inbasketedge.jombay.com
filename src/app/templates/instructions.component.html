@@ -1,0 +1,57 @@
+<div class="instructions">
+  <div class="row large-22 medium-20 small-30 margin-auto">
+    <ul>
+      <li class="slide_up" [class.active]="instructionsIndex == 0">
+        <img (error)="updateImageUrl($event)" src="./assets/images/in/instruction_01.png" alt="">
+        <p>Your working week in this simulation is divided into {{ number_of_days }} days. Each day, you will receive a set of emails in the <strong>‘Inbox’</strong> section.</p>
+      </li>
+      <li class="slide_up" [class.active]="instructionsIndex == 1">
+        <img (error)="updateImageUrl($event)" src="./assets/images/in/instruction_02.png" alt="">
+        <p>Your aim is to take as many <strong>correct actions</strong> as possible. Your actions and responses will help us build your profile.</p>
+      </li>
+      <li class="slide_up" [class.active]="instructionsIndex == 2">
+        <img (error)="updateImageUrl($event)" src="./assets/images/in/instruction_03.png" alt="">
+        <p>If you need to schedule a meeting, please click on the <strong>'Calendar'</strong> section. In this section, you can view your calendar, as well as those of your team.</p>
+      </li>
+      <li class="slide_up" [class.active]="instructionsIndex == 3">
+        <img (error)="updateImageUrl($event)" src="./assets/images/in/instruction_04.png" alt="">
+        <p>You can take actions on your team members through the <strong>'Team'</strong> section after reading your emails.</p>
+      </li>
+      <li class="slide_up" [class.active]="instructionsIndex == 4">
+        <img (error)="updateImageUrl($event)" src="./assets/images/in/instruction_05.png" alt="">
+        <p>Each day in the simulation will be of {{ min_per_day }} minutes. You are expected to manage your emails daily.</p>
+      </li>
+      <li class="slide_up" [class.active]="instructionsIndex == 5">
+        <img (error)="updateImageUrl($event)" src="./assets/images/in/instruction_06.png" alt="">
+        <p>
+          You have {{ total_duration }} minutes in all to complete the simulation.
+          <br/><br/><br/>
+          <a mat-button mat-raised-button class="btn-info text-medium line-height2 uppercase bold rounded" *ngIf="show_cta" (click) = "finishOnboarding()">Begin Simulation</a>
+        </p>
+      </li>
+    </ul>
+    <div class="instructions_navigation">
+      <div class="instructions_navigation_container">
+        <span class="spacer"></span>
+        <div class="arrow up">
+          <div class="prev"
+          (click) = "previousInstruction()"
+          *ngIf="instructionsIndex > 0"></div>
+        </div>
+        <div class="dot" [class.active]="instructionsIndex == 0" (click) = "instructionsIndex = 0"></div>
+        <div class="dot" [class.active]="instructionsIndex == 1" (click) = "instructionsIndex = 1"></div>
+        <div class="dot" [class.active]="instructionsIndex == 2" (click) = "instructionsIndex = 2"></div>
+        <div class="dot" [class.active]="instructionsIndex == 3" (click) = "instructionsIndex = 3"></div>
+        <div class="dot" [class.active]="instructionsIndex == 4" (click) = "instructionsIndex = 4"></div>
+        <div class="dot" [class.active]="instructionsIndex == 5" (click) = "instructionsIndex = 5"></div>
+        <div class="arrow down">
+          <div class="next"
+          (click) = "nextInstruction()" *ngIf="instructionsIndex < 5">
+          </div>
+        </div>
+        <span class="spacer"></span>
+      </div>
+    </div>
+    <div class="divider2"></div>
+  </div>
+</div>

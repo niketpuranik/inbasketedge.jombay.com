@@ -1,0 +1,94 @@
+.team{
+  display: flex;
+  .member_list, .member_actions, .member_show{
+    flex: 1;
+    overflow-y: auto;
+    border-left: solid 1px #d8d8d8;
+  }
+  .member_list{
+    border-right: solid 1px #d8d8d8;
+    flex: 0 0 300px;
+    overflow-y: auto;
+    background: #ededed;
+    li{
+      padding: rem-calc(16 25);
+      border-bottom: 2px solid #d8d8d8;
+      border-left: 4px solid transparent;
+      cursor: pointer;
+      &.active{
+        background: #fff;
+        border-left-color: $info-color;
+        .person_name{
+          font-weight: 600;
+          color: $info-color;
+        }
+      }
+      &:hover{
+        border-left-color: $info-color;
+        opacity: 0.7;
+      }
+      .avatar{
+        width: 20%;
+        float: left;
+      }
+      .name{
+        width: 80%;
+        float: left;
+        font-size: rem-calc(16);
+        line-height: rem-calc(22);
+        color: #000;
+        padding: rem-calc(5 0);
+        padding-left: 5%;
+        em{
+          color: #979797;
+        }
+      }
+    }
+  }
+  .member_show{
+    flex: 2;
+    color: #000;
+    padding: rem-calc(35 25);
+
+    ul {
+      padding-left: 40px !important;
+      li {
+        list-style-type: disc !important;
+      }
+    }
+
+    .member_details{
+      color: #000;
+    }
+    .header, .user{
+      @include flex;
+      align-items: center;
+    }
+    p{
+      color: rgba(0,0,0,0.67);
+      font-size: rem-calc(15);
+    }
+  }
+  .member_actions{
+    color: #000;
+    font-size: 14px;
+    border: 0 none;
+    margin-left: rem-calc(12);
+    padding: rem-calc(5);
+    padding-right: rem-calc(17);
+    .action_container{
+      padding: rem-calc(25);
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+      label{
+        color: rgba(0, 0, 0, 0.67);
+      }
+      input[type="radio"]:checked + label{
+        color: $info-color;
+        em{
+          color: rgba(0, 0, 0, 0.67);
+          font-weight: 200;
+        }
+      }
+    }
+  }
+}
