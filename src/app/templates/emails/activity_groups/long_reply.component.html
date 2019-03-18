@@ -1,0 +1,49 @@
+<li class="reply long">
+  <div class="count left">3. </div>
+  <div class="main_container left spacer">
+    <div class="status_bar" [ngClass] = "{ done: previous_selection }">
+      <div class="icon"></div>
+      {{ question.body }}
+    </div>
+  </div>
+  <div class="clr"></div>
+  <div class="text-center" *ngIf="!previous_selection">
+    <div class="divider1"></div>
+    <a mat-button mat-raised-button class="btn-info text-medium line-height2 uppercase bold rounded" (click) = "show_responses = true">Select response</a>
+  </div>
+  <div class="action_container custom_radio" *ngIf="previous_selection">
+    <div>
+      <label style="padding-left: 25px;display: block;">
+        {{ previous_selection_text }}
+      </label>
+      <div class="divider1"></div>
+    </div>
+  </div>
+</li>
+<li class="options-wrapper" [ngClass] = "{hide: !show_responses}">
+  <a class="uppercase info-color right text-extra-medium bold" (click) = "back()" matTooltipShowDelay="1000" matTooltipPosition="left" matTooltip = "Return to the email">Return</a>
+  <div class="clr"></div>
+  <div class="divider1"></div>
+  <div class="text-medium bold" [innerHTML] = "question.body"></div>
+  <div class="divider1"></div>
+  <div class="action_container custom_radio">
+    <div *ngFor="let option of options" (click) = "selectTempData(question, option)" [ngClass] = "{ grayscale: previous_selection && option._id.$oid != previous_selection }">
+      <span
+        class="sudo-radio"
+        [ngClass] ="{ checked: (option._id.$oid == previous_selection || (this.selected_option && (option._id.$oid == this.selected_option._id.$oid))) }"></span>
+      <label>
+        {{ option.body }}
+      </label>
+      <div class="divider1"></div>
+    </div>
+  </div>
+  <div *ngIf="action_flag">
+    <div class="left">
+      <a class="uppercase info-color right text-extra-medium bold" (click) = "clear_responses()" matTooltipShowDelay="1000" matTooltipPosition="above" matTooltip = "Clear response">Clear responses</a>
+    </div>
+    <div class="right">
+      <a class="uppercase info-color right text-extra-medium bold" (click) = "save()" matTooltipShowDelay="1000" matTooltipPosition="left" matTooltip = "Submit and return to the email">Done</a>
+    </div>
+    <div class="clr"></div>
+  </div>
+</li>

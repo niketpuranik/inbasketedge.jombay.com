@@ -1,0 +1,68 @@
+<div class="calendar">
+  <ul class="user_list">
+    <li
+    (click) ="setCalendarData(you)"
+    [ngClass] = "{ active: you._id.$oid == selected_person._id.$oid}">
+      <div class="avatar rounded">
+        <img class="rounded" src="{{ you.avatar_url}}" alt="">
+      </div>
+      <div class="name truncate">My Calendar</div>
+    </li>
+
+    <li *ngFor="let person of persons, let i = index"
+    (click) ="setCalendarData(person)"
+    [ngClass] = "{active: person._id.$oid == selected_person._id.$oid}">
+      <div class="avatar rounded">
+        <img class="rounded" src="{{ person.avatar_url}}" alt="">
+      </div>
+      <div class="name truncate">{{ person.name }}</div>
+    </li>
+
+  </ul>
+  <div class="calendar_schedule">
+    <div class="title_bar">
+      <div class="name spacer">
+        <span *ngIf="!selected_person.is_player">You are viewing <span class="bold">{{ selected_person.name }}'s </span> calendar.</span>
+        <span *ngIf="selected_person.is_player"> My Calendar </span>
+      </div>
+      <a mat-button mat-raised-button
+      class="btn-info text-medium line-height2 uppercase bold rounded"
+      (click)="scheduleMeeting(18, 8)" >Schedule Meeting</a>
+    </div>
+
+    <div class="schedule_container">
+      <table>
+        <tr>
+           <th><div></div></th>
+           <th *ngFor="let day of days, let i = index ">
+            <div>
+              <span>{{ day | date: 'dd MMM' }}</span>
+            </div>
+           </th>
+        </tr>
+
+        <tr *ngFor="let time of pre_lunch_times">
+          <td><div><span>{{ time }} AM</span></div></td>
+          <td *ngFor="let date of dates"
+            [ngClass] = "{scheduled: events[date+'_'+time] }"
+            (click) = openDialog(date,time)
+            title="{{ events[date+'_'+time] ? events[date+'_'+time] : 'Click to schedule meeting.'}}"><div>
+            {{ events[date+'_'+time] }}</div></td>
+        </tr>
+
+        <tr class="break">
+          <td><div><span>1PM</span></div></td>
+          <td colspan="7"><div><span>Lunch Time</span></div></td>
+        </tr>
+
+        <tr *ngFor="let time of post_lunch_times">
+          <td><div><span>{{ time - 12 }} PM</span></div></td>
+            <td (click) = openDialog(date,time) *ngFor="let date of dates"
+            [ngClass] = "{scheduled: events[date+'_'+time] }"
+            title="{{ events[date+'_'+time] ? events[date+'_'+time] : 'Click to schedule meeting.'}}"><div>
+            {{ events[date+'_'+time] }}</div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,105 @@
+<div class="hide-for-small">
+  <mat-toolbar class="header fixed" color="primary">
+    <div class="left_sec">
+      <img class="logo" src="./assets/images/in/logo.png" alt="">
+    </div>
+    <span class="company_name">{{ company_name }}</span>
+
+    <span class="spacer time" *ngIf="show_timer">
+      <span> Total Time Left </span>
+      <span class="time-value"> {{ timer }} </span>
+    </span>
+
+    <div class="user_sec" *ngIf="show_timer">
+      <div title = "{{ candidate_name }}" class="truncate">{{ candidate_name }}</div>
+      <!-- <div  class="avatar"><img src="./assets/images/in/avatar_thumb.png" alt=""></div> -->
+    </div>
+    <a class="exit_btn" (click) = "exitSimulation()" *ngIf="show_timer">
+      <div>Exit</div>
+      <img src="./assets/images/in/exit_to_app.svg" alt="">
+    </a>
+  </mat-toolbar>
+</div>
+<div class="header_divider hide-for-small"></div>
+<div class="divider2 show-for-small"></div>
+<div class="content_wrapper">
+  <div class="user_flow">
+    <div class="progress_section_divider"></div>
+    <div class="progress_section">
+      <div class="large-24 columns margin-auto no-padding">
+        <div class="progress_meter_wrapper days_{{ total_days.length }}">
+          <div class="progress_meter" [style.width.%]="completed_percentage"><div class="dot"></div>
+        </div>
+      </div>
+      <ul class="progressbar clearfix">
+          <li class= "days_{{ total_days.length }}"
+            *ngFor= "let day of days, let i=index"
+            [ngClass] = "
+              { active: day_count > i,
+                current: day_count == (i + 1)
+              }">
+            <span>{{ day | date: 'dd MMM' }}</span>
+          </li>
+      </ul>
+      <!--   <div class="progress_bar">
+          <div class="progress_meter" [style.width.%]="completed_percentage"><div class="dot"></div></div>
+          <ul class="dot_container">
+            <li class="spacer">
+              <div class="dot"
+              [ngClass] = "{ active: day_count > 1 }"></div>
+            </li>
+            <li class="spacer">
+              <div class="dot" [ngClass] = "{ active: day_count > 2 }"></div>
+            </li>
+            <li class="spacer">
+              <div class="dot" [ngClass] = "{ active: day_count > 3 }"></div>
+            </li>
+            <li class="spacer">
+              <div class="dot" [ngClass] = "{ active: day_count > 4 }"></div>
+            </li>
+            <li class="spacer" [ngClass] = "{ active: day_count > 5 }">
+              <div class="dot"></div>
+            </li>
+          </ul>
+          <ul class="day_text_container clearfix" >
+            <li class="large-5 columns">
+              <div class="day_text">Dec 21</div>
+            </li>
+            <li class="large-5 columns">
+              <div class="day_text">Dec 22</div>
+            </li>
+            <li class="large-5 columns">
+              <div class="day_text">Dec 23</div>
+            </li>
+            <li class="large-5 columns">
+              <div class="day_text">Dec 24</div>
+            </li>
+            <li class="large-5 columns">
+              <div class="day_text">Dec 25</div>
+            </li>
+            <li class="large-5 columns">
+              <div class="day_text">Dec 26</div>
+            </li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<div class="proctoring-error-wrapper hide">
+  <div class="hide-all">
+    <p class="danger-color"> Your system doesn't have a webcam or you have not allowed access to the webcam! Kindly switch to a new machine with a webcam or allow access to the webcam and reload the page.</p>
+  </div>
+</div>
+
+<div [ngClass]="{hide: !showError}">
+  <div class="error">
+    <div class="text" [innerHTML]='errorText'></div>
+    <a mat-raised-button (click)="hideError()">Okay</a>
+    <div class="clr"></div>
+  </div>
+</div>

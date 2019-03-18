@@ -1,0 +1,94 @@
+onboarding{
+  .onboarding-wrapper {
+    z-index: 1000;
+    background: #fff;
+    height: calc(100vh - #{$header_height});
+    width: 100vw;
+    position: fixed;
+    top: $header_height;
+    left: 0;
+    overflow-y: auto;
+  }
+  .loader-wrapper {
+    z-index: 100000;
+    top: 0px;
+    height: 100vh;
+  }
+  .heading_with_back{
+    @include flex;
+    align-items: center;
+    background-color: #3b94cb;
+    padding: rem-calc(0 20);
+    h1{
+      color: #fff;
+      margin: 0;
+      font-size: rem-calc(24);
+      line-height: rem-calc(52);
+    }
+  }
+  .back_btn{
+    color: #fff;
+    font-size: rem-calc(16);
+    line-height: rem-calc(52);
+    img{
+      width: auto !important;
+      margin-right: rem-calc(15);
+    }
+  }
+  .onboarding {
+    height: 100%;
+    width: 100%;
+    @include flex;
+    align-content: center;
+    align-items: center;
+    .guiding_text {
+      font-size: rem-calc(30);
+      margin-top: rem-calc(20);
+      height: 35px;
+      text-align: center;
+    }
+  }
+
+  .onboarding {
+    & > ul{
+      background: #fff;
+      height: 100%;
+      width: 100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      & > li{
+        background: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        img{
+          width: 100%;
+        }
+        &.active{
+          z-index: 1;
+        }
+      }
+    }
+
+    .instructions {
+      overflow-y: hidden;
+    }
+  }
+}
+.loader {
+  margin: auto;
+  mat-progress-spinner {
+    width: 50px!important;
+    height: 50px!important;
+    margin: auto;
+    svg {
+      width: 50px!important;
+      height: 50px!important;
+    }
+  }
+}

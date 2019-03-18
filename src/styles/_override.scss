@@ -1,0 +1,268 @@
+html, body, app{
+  background-color: #fff;
+  font-family: 'Arial', Helvetica Neue, Helvetica, sans-serif;
+  max-height: 99vh;
+  overflow: hidden;
+  .mat-tab-body-content{
+    -webkit-backface-visibility: visible; 
+    backface-visibility: visible;
+  }
+}
+.mat-toolbar, .mat-toolbar h1, .mat-toolbar h2, .mat-toolbar h3, .mat-toolbar h4, .mat-toolbar h5, .mat-toolbar h6 {
+  font: 500 20px/32px 'Arial', Helvetica Neue, Helvetica, sans-serif;
+}
+
+.mat-button, .mat-raised-button, .mat-icon-button, .mat-fab, .mat-mini-fab {
+  font-family: 'Arial', Helvetica Neue, Helvetica, sans-serif;
+}
+
+body{
+  font-weight: normal;
+  a{
+    cursor: pointer;
+  }
+  a:focus{
+    opacity: 1;
+  }
+  a[mat-raised-button], button, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+    color: $warning-color !important;
+    border: 1px solid $warning-color !important;
+
+    &.btn-warning{
+      background-color: $warning-color;
+      color: $warning-color !important;
+      border: 1px solid $warning-color !important;
+      &.inverse{
+        background-color: #fff;
+        color: $warning-color !important;
+        border: 1px solid $warning-color !important;
+      }
+    }
+    &.btn-info{
+      background-color: $info-color;
+      color: #fff !important;
+      border: 1px solid $info-color !important;
+      &.inverse{
+        background-color: #fff;
+        color: $info-color !important;
+        border: 1px solid $info-color !important;
+      }
+    }
+    &.rounded{
+      border-radius: rem-calc(300);
+      padding: rem-calc(0 20);
+      .mat-button-focus-overlay, .mat-button-ripple{
+        border-radius: rem-calc(300);
+      }
+    }
+    &.btn-link{
+      background-color: #fff !important;
+      border-color: transparent !important;  
+      box-shadow: none !important;
+      &.info-color{
+        color: $info-color !important;
+      }
+      &.grey-color{
+        color: $grey-color !important;
+      }
+    }
+  }
+  app{
+    display: block;
+    height: 100%;
+    width: 100%;
+  }
+  ng-component{
+    display: block;
+    // min-height: calc(99vh - #{$header_height});
+    // width: 100%;
+  }
+  mat-radio-button, mat-checkbox{
+    margin: 3px 0;
+  }
+  .mat-toolbar.mat-primary{
+    background-color: #45b0f2;
+  }
+  .mat-radio-label-content{
+    padding-left: rem-calc(15);
+    padding-top: 9px;
+    white-space: normal;
+    display: block;
+  }
+
+  .mat-radio-label{
+    display: -ms-inline-flexbox;
+    align-items: flex-start;
+  }
+  .mat-radio-button, .mat-radio-label, .mat-radio-label-content{
+    max-width: 100%;
+  }
+
+  .mat-radio-group{
+    display: block;
+    label{
+      &::after, &::before{
+        @include clearfix;
+        clear: both;
+      }
+    }
+  }
+  .mat-checkbox-inner-container{
+    width: rem-calc(31);
+    height: rem-calc(31);
+  }
+  .mat-checkbox-layout .mat-checkbox-label{
+    line-height: rem-calc(31)
+  }
+  .mat-radio-container{
+    float: left;
+  }
+  .mat-radio-ripple .mat-ripple-element{
+    background-color: $grey-color;
+    opacity: 0.3;
+  }
+  .mat-radio-outer-circle, .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle, .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-inner-circle, {
+    border-color: $dark-grey-color;
+  }
+  .mat-radio-button.mat-accent .mat-radio-inner-circle{
+    background: $dark-grey-color;
+  }
+  .mat-checkbox-frame{
+    border-color: $grey-color;
+    border-radius: rem-calc(6);
+  }
+  .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background{
+    background-color: $grey-color;
+    border-radius: rem-calc(6);
+  }
+  .mat-checkbox-ripple .mat-checkbox-element{
+    background-color: $grey-color;
+  }
+  .mat-radio-outer-circle, .mat-radio-inner-circle, .mat-radio-container{
+    height: rem-calc(36);
+    width: rem-calc(36);
+  }
+  .mat-radio-checked{
+    .mat-radio-outer-circle{
+      border-color: $grey-color;
+
+    }
+    .mat-radio-inner-circle{
+      background-color: $grey-color;
+    }
+  }
+  mat-tab-body{
+    padding: 0.1px;
+  }
+  mat-tab-body.mat-tab-body-active{
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  }
+  [mat-tab-nav-bar]{
+    border: 0 none;
+  }
+  //Icons
+  mat-icon{
+    height: auto !important;
+    width: auto !important;
+  }
+  //modal
+  mat-dialog-container{
+    padding: rem-calc(0);
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    overflow: inherit !important;
+    .close{
+      display: block;
+      height: rem-calc(36);
+      width: rem-calc(36);
+      background-color: $warning-color;
+      border-radius: 50%;
+      top: -16px;
+      right: -16px;
+      line-height: rem-calc(36);
+      text-align: center;
+      position: absolute;
+      font-weight: 600;
+      *{
+        color: #fff;
+        font-size: rem-calc(20);
+        font-weight: 200;
+      }
+    }
+  }
+  .mat-dialog-container{
+    padding: 0
+  }
+  .mat-dialog-actions{
+    display: block;
+  }
+  .cdk-global-overlay-wrapper{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start !important;
+  }
+  .cdk-overlay-pane{
+    margin: 0 auto;
+    width: auto !important;
+    height: auto !important;
+  }
+  .cdk-overlay-container:empty{
+    display: none;
+  }
+
+  mat-spinner {
+    width: 50px !important;
+    height: 50px !important;
+    path {
+      stroke: $warning-color !important;
+    }
+  }
+  .mat-tooltip{
+    position: relative;
+    color: rgba(0, 0, 0, 0.67) !important;
+    border: 1px solid #d8d8d8;
+    font-size: rem-calc(14) !important;
+    padding: 12px !important;
+    line-height: normal !important;
+    background: #fff;
+    border-radius: 0px;
+    min-height: rem-calc(40);
+    height: auto !important;
+    width: rem-calc(200);
+    box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.4);
+  }
+  .mat-tab-header{
+    background: #fff;
+  }
+  .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+    background-color: $info-color;
+    height: 4px;
+  }
+  .mat-tab-label.mat-ripple.mat-tab-label-active{
+    color: $info-color;
+    font-weight: 600;
+  }
+  .mat-tab-label{
+    min-width: 100px;
+    color: rgba(0, 0, 0, 0.67);
+    opacity: 1;
+    text-transform: uppercase;
+  }
+  //snackBar
+  .mat-snack-bar-container{
+    background-color: #3b94cb;
+    text-align: center;
+    position: fixed;
+    top: rem-calc(140);
+    left: calc(50% - 120px);
+  }
+  .mat-simple-snackbar{
+    justify-content: center !important;
+  }
+}

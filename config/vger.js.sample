@@ -1,0 +1,9 @@
+module.exports.api = {
+  protocol: "https",
+  host: "simulationapiinternal.ur-nl.com",
+  port: 443,
+  rejectUnauthorized: false,
+  app_id: "8f7f8620d0b0ae6c98162fd9d448a6607219dbd692374bebabb09c1e3104b1c7",
+  secret: "bbbe78a1a5a570d674325889f4a21aa7feab7f81c3c1ef8b47a1cb65db210a3d",
+  storeOAuthToken: true
+}

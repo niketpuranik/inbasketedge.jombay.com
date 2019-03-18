@@ -1,0 +1,22 @@
+<li class="priority">
+  <div class="count left">2. </div>
+  <div class="main_container left spacer">
+    <div class="status_bar" [ngClass] = "{ done: previous_selection }">
+      <div class="icon"></div>
+      {{ activity_group.name }}
+    </div>
+    <div class="divider1"></div>
+    <div class="action_container custom_radio">
+      <div *ngFor="let activity of activities" (click) = "saveResponse(activity)">
+        <span
+          class="sudo-radio"
+          [ngClass] ="{ checked: activity._id.$oid == previous_selection }"></span>
+        <label>
+          {{ activity.name }}
+        </label>
+        <div class="divider1"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clr"></div>
+</li>

@@ -1,0 +1,40 @@
+@import '/user_flow/progress_section';
+@import '/user_flow/inbox';
+@import '/user_flow/calendar';
+@import '/user_flow/team';
+@import '/user_flow/team_tree';
+// heder- 60
+// progress - 40
+// tab 48
+.user_flow{
+	.mat-tab-header{
+		padding: rem-calc(0 25);
+	}
+	
+	.inbox,.calendar,.team,.introduction, .org_chart{
+		height: calc(99vh - #{$header_height + $progress_section_height + $tab_height});
+		overflow-y: auto;
+		width: 100%;
+	}
+	.calendar{
+		overflow-y: visible;
+	}
+	.introduction{
+		overflow-y: auto;
+		height: calc(99vh - #{$header_height + $progress_section_height + $tab_height});
+		
+		.mat-tab-header{
+			background: #fff;
+		}
+		.mat-tab-group.mat-primary .mat-tab-label:focus{
+			background: transparent;
+		}
+		.mat-tab-body-content{
+			height: auto;
+			overflow: auto;
+		}
+		.org_chart{
+			text-align: center;
+		}
+	}
+}

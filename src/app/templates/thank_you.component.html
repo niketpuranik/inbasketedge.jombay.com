@@ -1,0 +1,32 @@
+<div class="thank_you text-center">
+  <div *ngIf="!redirect_flag">
+    <div class="visual">
+      <div *ngIf = "show_loader" class="loader">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+      </div>
+      <img (load) = "show_loader = false" src="./assets/images/in/thank_visual.svg">
+    </div>
+    <div class="divider3"></div>
+    <div class="content">
+      <div class="heading">
+        Jombay Inbasket Edge Simulation
+      </div>
+      <div class="divider1"></div>
+      <p class="message" [innerHtml] = "thank_you_message"></p>
+    </div>
+  </div>
+
+  <div *ngIf="redirect_flag">
+    <div style="width: 100%;position: fixed;top: 100px;left: 0px;">
+      <div class="content">
+        <div class="loader">
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+        </div>
+        <br><br>
+        <div class="heading" >
+          <span class="message" [innerHtml] = "thank_you_message"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

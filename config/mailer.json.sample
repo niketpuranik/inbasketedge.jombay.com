@@ -1,0 +1,8 @@
+{
+  "recipients": "test.user@jombay.com",
+  "sender": "Application Error <errors@jombay.com>",
+  "ses": {
+    "access_key_id": "AKIAJTAEEQWNZIKMPD4A",
+    "secret_key": "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"
+  }
+}

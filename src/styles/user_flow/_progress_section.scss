@@ -1,0 +1,204 @@
+.progress_meter_wrapper {
+  top: 6px;
+  left: calc(50% / 6);
+  position: absolute;
+  width: 83.33333%;
+  &.days_3 {
+    left: calc(50% / 3);
+    width: 66.666667%;
+  }
+}
+
+.progressbar {
+  li {
+    list-style: none;
+    float: left;
+    width: calc(100% / 6);
+    position: relative;
+    text-align: center;
+    &.days_3 {
+      width: calc(100% / 3);
+    }
+  }
+}
+
+.progressbar li span{
+	color: #fff;
+	font-size: rem-calc(14);
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.67;
+}
+.progressbar li:before {
+  content: " ";
+  height: rem-calc(15);
+	width: rem-calc(15);
+	background-color: #133042;
+	border: 2px solid #133042;
+  border-radius: 100%;
+  display: block;
+  text-align: center;
+  margin: 0 auto 6px auto;
+}
+.progressbar li:after {
+  content: " ";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: #133042;
+  top: rem-calc(7);
+  left: -50%;
+  z-index : -1;
+}
+.progressbar li:first-child:after {
+  content: none;
+}
+.progressbar li.active:before {
+  background-color: #fff;
+}
+.progressbar li.current span{
+  opacity: 1;
+}
+
+
+.progress_section_divider{
+	height: $progress_section_height;
+}
+.progress_section{
+	background: #3b94cb;
+	height: $progress_section_height;
+	padding-left: rem-calc(45);
+	color: #000;
+	position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: $header_height;
+  left: 0;
+  padding: rem-calc(2 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progress_meter{
+	border-left: 0 none;
+	border-right: 0 none;
+	position: absolute;
+	background: #fff;
+	height: rem-calc(4);
+	border-radius: rem-calc(300);
+	top: 0px;
+	left: 0px;
+	z-index: 1;
+	transition: width 2s;
+}
+.progress_meter .dot{
+	border: 0 none;
+	margin-top: 2px;
+	margin-right: -5px;
+	background: #fff;
+	position: static;
+	float: right;
+	height: rem-calc(11);
+	width: rem-calc(11);
+	box-shadow: 0 0 6px 0 #00bcd4;
+	border-radius: 50%;
+	transform: translate(0, -50%);
+}
+/*.progress_section{
+	background: #3b94cb;
+	height: $progress_section_height;
+	padding-left: rem-calc(45);
+	color: #000;
+	position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: $header_height;
+  left: 0;
+  padding: rem-calc(16 0);
+	.progress_bar{
+		position: relative;
+		height: $progress_section_height;
+		.dot, .dot_container::before{
+			height: rem-calc(15);
+			width: rem-calc(15);
+			background-color: #133042;
+			border: 2px solid #133042;
+			border-radius: 50%;
+			position: absolute;
+			right: -1px;
+			top: 50%;
+			transform: translate(0, -50%);
+		}
+
+		.progress_meter{
+			border-left: 0 none;
+			border-right: 0 none;
+			position: absolute;
+			background: #fff;
+			height: rem-calc(4);
+			border-radius: rem-calc(300);
+			top: -1px;
+			min-width: 11px;
+			left: -1px;
+			z-index: 1;
+			transition: width 2s;
+			.dot{
+				border: 0 none;
+				margin-top: 2px;
+				background: #fff;
+				position: static;
+				float: right;
+				height: rem-calc(11);
+				width: rem-calc(11);
+				box-shadow: 0 0 6px 0 #00bcd4;
+			}
+
+		}
+		.dot_container{
+			@include flex;
+			align-items: center;
+			position: relative;
+			&::before{
+				left: -3px;
+				right: auto;
+				background-color: #fff;
+				content: ' ';
+			}
+		}
+		.day_text_container{
+			position: absolute;
+			top: rem-calc(10);
+			left: 0;
+			border: 1px solid red;
+			height: 100%;
+			width: calc(100% + 200px);
+			margin-left: rem-calc(-200);
+			li{
+			}
+			.day_text{
+				color: #fff;
+				font-size: rem-calc(14);
+				line-height: rem-calc(16);
+				font-weight: 600;
+				opacity: 0.67;
+				text-align: center;
+			}
+		}
+		.spacer{
+			position: relative;
+			border: 1px solid #133042;
+			border-left: 0 none;
+			border-right: 0 none;
+			.dot.active{
+				background-color: #fff;
+			}
+		}
+	}
+	.right_sec{
+		height: 100%;
+		display: flex;
+		padding-right: 0;
+	}
+
+}*/
